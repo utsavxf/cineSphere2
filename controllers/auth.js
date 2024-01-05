@@ -37,7 +37,7 @@ const generate_jwt = (id, isAdmin) => {
   return jwt.sign({ id: id, isAdmin: isAdmin }, process.env.SECRET_KEY, {
     expiresIn: "15d",
   });
-};
+}; 
 
 //Login User
 export const loginUser = async (req, res) => {

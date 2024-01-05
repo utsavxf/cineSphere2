@@ -15,21 +15,24 @@ const Header = () => {
 
   return (
     <Nav>
-      <Logo>
+      {/* <Logo>
         <Menu
           className="menuIcon"
           onClick={() => (showMenu ? setShowMenu(false) : setShowMenu(true))}
         />
-        <img
+        {/* <img
           src="/images/logo.svg"
-          alt="Disney+"
+          alt="CineSphere"
           onClick={() => navigate("/")}
-        />
-      </Logo>
+        /> *
+      </Logo> */}
+        <span style={{color:'white',fontSize:'24px', letterSpacing: '-1px'}}>CINESPHERE</span>
+
       <>
         <NavMenu showMenu={showMenu}>
           <Link to="/" onClick={() => setShowMenu(false)}>
             <img src="/images/home-icon.svg" alt="HOME" />
+
             <span>HOME</span>
           </Link>
           <Link to="/search" onClick={() => setShowMenu(false)}>

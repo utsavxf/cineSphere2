@@ -23,7 +23,7 @@ const Footer = () => {
           </a>
         </li>
         <li className="social-icon__item">
-          <a className="social-icon__link" href="#">
+          <a className="social-icon__link" href="https://github.com/utsavxf">
             <GitHub className="icon" />
           </a>
         </li>

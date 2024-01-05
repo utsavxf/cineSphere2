@@ -13,26 +13,27 @@ app.use(express.urlencoded({ limit: "30mb", extended: true }));
 
 app.use("/user", UserRoute);
 
-const connectDb = async () => {
-  try {
-    const conn = await mongoose.connect(process.env.MANGO_URL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+const MONGO_URI='mongodb://localhost:27017/cinesphere'
 
-    console.log(`MangoDb connected: ${conn.connection.host}`);
-  } catch (error) {
-    console.log(error);
-  }
+const connectDb = async () => {
+  mongoose
+  .connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true,family:4 })
+  .then(() => {
+    console.log("Connected to MongoDB");
+  }) 
+  .catch((error) => {
+    console.error("Error connecting to MongoDB:", error);
+  });
+
 };
 connectDb();
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("frontend/dist"));
-  app.get("*", (req, res) => {
-    res.sendFile("/frontend/dist");
-  });
-}
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static("frontend/dist"));
+//   app.get("*", (req, res) => {
+//     res.sendFile("/frontend/dist");
+//   });
+// }
 
 app.listen(port, () => {
   console.log(`server running on port ${port}`);
